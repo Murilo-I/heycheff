@@ -1,0 +1,70 @@
+body {
+    background-color: #FFD186;
+    background-image: url(images/hey_cheff_logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-position-y: 35%;
+    font-family: Consolas, sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 120px;
+    position: absolute;
+    justify-content: center;
+    top: 55%;
+    left: calc(50% - 60px);
+}
+
+.main input[type=button] {
+    margin: 15px;
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 15px;
+    background-color: #F44646;
+    min-width: 110px;
+    font-weight: bold;
+}
+
+img {
+    position: absolute;
+}
+
+#bacon {
+    top: 50%;
+    left: 12%;
+    opacity: .5;
+}
+
+#brocoli {
+    top: 10%;
+    left: 15%;
+    opacity: .5;
+}
+
+#burger {
+    bottom: 10%;
+    left: 20%;
+    opacity: .5;
+}
+
+#chicken {
+    bottom: 20%;
+    right: 25%;
+    opacity: .5;
+}
+
+#fish {
+    top: 40%;
+    right: 6%;
+    opacity: .5;
+}
+
+#lamen {
+    top: 8%;
+    right: 10%;
+    opacity: .5;
+}
