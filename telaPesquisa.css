@@ -1,23 +1,29 @@
 body {
-    margin: 0 auto;
-    padding: 0;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
     background-color: #F8F8F8;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-position-y: 35%;
-    /* font-family: Consolas, sans-serif; */
 }
 
 header{
     background-color: #FFD186;
     height: 44.27px;
-    display: table;
+    display: flex;
     width: 100%;
+    position: relative;
 }
 
 header img{
     height: 44.27px;
+    margin: auto;
 }
 
 header #logoHeader{
@@ -26,19 +32,37 @@ header #logoHeader{
 
 header #voltarHeader{
     margin-left: 12px;
+    height: 25px;
+    position: relative;
 }
 
 header h1{
-    display: table-cell;
     margin: auto;
     font-family: 'Comfortaa';
-    font-style: normal;
     font-weight: 400;
     font-size: 21px;
-    src: url(https://fonts.gstatic.com/s/comfortaa/v40/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMDr4fIA9c.woff2) format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-    text-align: center;
-    vertical-align:middle;
+} 
+
+main #busca{
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 30px;
+  display: block;
+  border-radius: 20px;
+  width: 280px;
+}
+
+main #filtros{
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 15px;
+  margin: auto;
+  display: flex;
+  margin-top: 15px;
 }
 
 /* cyrillic-ext */
