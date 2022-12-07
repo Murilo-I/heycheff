@@ -41,29 +41,61 @@ header h1{
     font-family: 'Comfortaa';
     font-weight: 400;
     font-size: 21px;
-} 
+}
 
-main #busca{
+.buscar{
+  max-width: 240px;
+  margin: 0 auto;
+  padding: 0px 33px 0px 0px;
+}
+
+#busca{
   font-family: 'Comfortaa';
   font-weight: 400;
   font-size: 16px;
   padding: 15px;
-  margin: auto;
   margin-top: 30px;
-  display: block;
   border-radius: 20px;
-  width: 280px;
+  width: 100%;
+  resize:vertical;
+}
+
+.botoesFiltro{
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.card-text{
+  font-family: 'Comfortaa';
+  font-weight: 700;
+  font-size: 17px;
 }
 
 main #filtros{
   font-family: 'Comfortaa';
   font-weight: 400;
   font-size: 16px;
-  padding: 15px;
-  margin: auto;
-  display: flex;
-  margin-top: 15px;
+  display:flex;
+  margin-top: 30px;
 }
+
+
+main #filtros input{
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 15px;
+  background-color: #FFD186;
+  border-radius: 20px;
+}
+
+
+.cardsReceitas{
+  height: 100vh;
+  overflow-y:auto;
+  margin: auto;
+  margin-top: 12px;
+}
+
 
 /* cyrillic-ext */
 @font-face {
