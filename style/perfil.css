@@ -128,7 +128,7 @@ body {
     justify-content: center;
     flex-direction: row;
     top: 30px;
-    padding-bottom: 45px;
+    padding-bottom: 55px;
 }
 
 .box1 {
@@ -174,4 +174,11 @@ body {
     background-image: url(../images/plus_icon.png);
     background-repeat: no-repeat;
     background-position: center;
+}
+
+@media (width < 390px) {
+    .box1, .box2 {
+        height: 110px;
+        width: 110px;
+    }
 }
