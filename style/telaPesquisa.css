@@ -1,0 +1,104 @@
+body {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  background-color: #F8F8F8;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-position-y: 35%;
+}
+
+header {
+  background-color: #FFD186;
+  height: 44.27px;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+header a {
+  margin: auto 0;
+}
+
+header a img {
+  height: 44.27px;
+}
+
+header #logoHeader {
+  margin-right: 12px;
+}
+
+header #voltarHeader {
+  margin-left: 12px;
+  height: 25px;
+  position: relative;
+}
+
+header h1 {
+  margin: auto;
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 21px;
+}
+
+.buscar {
+  display: flex;
+  justify-content: center;
+}
+
+#busca {
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 30px;
+  border-radius: 20px;
+  width: 100%;
+  resize: vertical;
+  width: 240px;
+}
+
+.botoesFiltro {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-text {
+  font-family: 'Comfortaa';
+  font-weight: 700;
+  font-size: 17px;
+}
+
+main #filtros {
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  font-size: 16px;
+  display: flex;
+  margin-top: 30px;
+}
+
+
+main #filtros input {
+  font-family: 'Comfortaa';
+  padding: 5px;
+  font-weight: 400;
+  width: 100px;
+  margin: 5px;
+  font-size: 15px;
+  background-color: #FFD186;
+  border-radius: 20px;
+}
+
+
+.cardsReceitas {
+  height: 100vh;
+  overflow-y: auto;
+  margin: auto;
+  margin-top: 12px;
+}

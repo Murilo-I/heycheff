@@ -1,6 +1,6 @@
 timeline = document.querySelector('.timeline');
 
-fetch('data.json').then(resp => resp.json()).then(json => {
+fetch('script/data.json').then(resp => resp.json()).then(json => {
     for (var i = 0; i < json.length; i++) {
         var div = document.createElement('div');
         var img = document.createElement('img');

@@ -51,6 +51,11 @@ body {
     min-height: 160px;
 }
 
+.link-pesquisa a, .link-perfil a {
+    text-decoration: none;
+    color: black;
+}
+
 .link-perfil {
     bottom: 0;
     left: calc(50% - 50px);

@@ -1,0 +1,177 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa';
+}
+
+.perfil_navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #FFD186;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    height: 40px;
+}
+
+.nav_title {
+    font-size: 25px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.nav_img img {
+    margin-left: 10px;
+    height: 25px;
+}
+
+.nav_lg img {
+    margin-right: 10px;
+    height: 35px;
+}
+
+
+.perfil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    flex-direction: row;
+}
+
+.perfil_img {
+    height: 200px;
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+.perfil_img img {
+    height: 200px;
+    border-radius: 50%;
+}
+
+.perfil_user {
+    font-size: 21px;
+    margin-right: 15px;
+}
+
+.perfil_nps {
+    background-color: #FFD186;
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+
+.perfil_nps img {
+    height: 20px;
+}
+
+.perfil_nps p {
+    margin-left: 10px;
+}
+
+.perfil_informacoes {
+    width: 100%;
+    margin: 30px 0;
+}
+
+.perfil_valor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+.perfil_info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    position: relative;
+}
+
+.perfil_info p {
+    margin: 0;
+    top: 50%;
+}
+
+.perfil_info .separator {
+    width: 0;
+    border-right: solid 2px black;
+}
+
+.menu_sele {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.menu_sele img {
+    width: 30px;
+    height: 33px;
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.grid_publi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    top: 30px;
+    padding-bottom: 45px;
+}
+
+.box1 {
+    margin: 5px;
+    height: 120px;
+    width: 120px;
+    background-image: url(../images/receita_1.jpg);
+    background-size: 120px 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.box2 {
+    height: 120px;
+    width: 120px;
+    background-color: #F8F8F8;
+    margin: 5px;
+}
+
+.footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFD186;
+    text-align: center;
+    height: 50px;
+}
+
+.adc_pub {
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #FCEE21;
+    box-shadow:  0 0 3px 5px #F44646;
+    -moz-box-shadow: 0 0 3px 5px #F44646;
+    -webkit-box-shadow: 0 0 3px 5px #F44646;
+    -o-box-shadow: 0 0 3px 5px #F44646;
+    background-image: url(../images/plus_icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
