@@ -2,12 +2,12 @@ var imgCard = document.querySelector('#card-img');
 var txtCard = document.querySelector('#card-txt');
 
 function loadNord() {
-    imgCard.src = "../images/nord.jpg";
+    imgCard.src = "images/nord.jpg";
     txtCard.innerHTML = "Aprenda a fazer uma tapioca com iguarias nordestinas";
 }
 
 function loadJapa() {
-    imgCard.src = "../images/japa.jpg";
+    imgCard.src = "images/japa.jpg";
     txtCard.innerHTML = "Como fazer o corte sashimi do mestre Japonês";
 }
 
