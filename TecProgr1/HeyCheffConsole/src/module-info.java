@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Bruno
+ *
+ */
+module HeyCheffConsole {
+}
