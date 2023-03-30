@@ -7,33 +7,30 @@ import br.edu.fatec.model.Step;
 
 public class Principal {
 
-	private static String[][] receitas = new String[10][6]; //vetor multidimensional para armazenar as receitas e ingredientes
-	private static int numReceitas = 0; //variável para controlar o número de receitas cadastradas
+	private static String[][] receitas = new String[10][6]; // vetor multidimensional para armazenar as receitas e
+															// ingredientes
+	private static int numReceitas = 0; // variável para controlar o número de receitas cadastradas
 
 	public static void main(String[] args) {
-		
-		Step s1 = new Step(1);
-		s1.ingredientes[0] = "Ovo";
-		s1.setDescricao("Quebrar ovo");
-		
-		Step s2 = new Step(2);
-		s2.ingredientes[0] = "Manteiga";
-		s2.ingredientes[1] = "Azeita";
-		s2.setDescricao("Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo");
-		
-		Step s3 = new Step(1);
-		s3.ingredientes[0] = "Sal";
-		s3.setDescricao("Adicione Sal a gosto");
-		
-		Step s4 = new Step(0);
-		s3.setDescricao("Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado");
-		
-		
-		Receita r1 = new Receita(4);
-		r1.
-		
+
+		Receita receita1 = new Receita("Ovo Frito");
+		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"),
+				new Step(new String[] { "Manteiga", "Azeita" },
+						"Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"),
+				new Step(new String[] { "Sal" }, "Adicione Sal a gosto"),
+				new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
+
+		receita1.setSteps(stepsReceita1);
+
 		Receita[] arrayReceita = new Receita[100];
+		arrayReceita[0] = receita1;
 		
+		for(int i=0;i<arrayReceita.length;i++) {
+			if(arrayReceita[i] == null) break;
+			System.out.println(arrayReceita[i].getId() + " - " + arrayReceita[i].getDescricao());
+			
+		}
+
 		Scanner sc = new Scanner(System.in);
 
 		while (true) {

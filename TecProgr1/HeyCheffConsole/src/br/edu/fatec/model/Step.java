@@ -6,10 +6,11 @@ public class Step {
 	public String[] ingredientes;
 	private int totalSteps = 0;
 
-	public Step(int qtIngredientes) {
+	public Step(String[] ingredientes, String descricao) {
 		this.id = this.totalSteps;
 		this.totalSteps++;
-		if (qtIngredientes > 0) this.ingredientes = new String[qtIngredientes];
+		this.ingredientes = ingredientes;
+		this.descricao = descricao;
 	}
 
 	public String getDescricao() {

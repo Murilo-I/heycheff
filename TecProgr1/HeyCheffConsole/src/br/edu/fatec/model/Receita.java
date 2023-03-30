@@ -3,24 +3,33 @@ package br.edu.fatec.model;
 public class Receita {
 	private int id;
 	private String descricao;
-	public Step[] steps;
+	private Step[] steps;
 	private int totalReceitas = 0;
 
-	public Receita(int qtSteps) {
+	public Receita(String descricao) {
 		this.id = this.totalReceitas;
 		this.totalReceitas++;
-		if (qtSteps > 0) this.steps = new Step[qtSteps];
+		this.descricao = descricao;
 	}
 
 	public String getDescricao() {
 		return descricao;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
-	public void adicionarStep(Step step) {
-		this.steps[this.totalReceitas]
+	public Step[] getSteps() {
+		return steps;
 	}
+
+	public void setSteps(Step[] steps) {
+		this.steps = steps;
+	}
+	
 }
