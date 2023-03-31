@@ -7,30 +7,20 @@ import br.edu.fatec.model.Step;
 
 public class Principal {
 
-	private static String[][] receitas = new String[10][6]; // vetor multidimensional para armazenar as receitas e
-															// ingredientes
-	private static int numReceitas = 0; // variável para controlar o número de receitas cadastradas
+	private static Scanner sc;
+
+	// private static String[][] receitas = new String[10][6];
+	// private static int numReceitas = 0;
 
 	public static void main(String[] args) {
 
 		Receita receita1 = new Receita("Ovo Frito");
-		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"),
-				new Step(new String[] { "Manteiga", "Azeite" },
-						"Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"),
-				new Step(new String[] { "Sal" }, "Adicione Sal a gosto"),
-				new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
+		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"), new Step(new String[] { "Manteiga", "Azeite" }, "Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"), new Step(new String[] { "Sal" }, "Adicione Sal a gosto"), new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
 
 		receita1.setSteps(stepsReceita1);
 
 		Receita receita2 = new Receita("Arroz Cozido");
-		Step[] stepsReceita2 = { new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"),
-				new Step(new String[] { "Azeite" },
-						"Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"),
-				new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"),
-				new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"),
-				new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"),
-				new Step(new String[] { "Sal" }, "Adicione sal a gosto"),
-				new Step(new String[] {}, "Aguarde a água secar") };
+		Step[] stepsReceita2 = { new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"), new Step(new String[] { "Azeite" }, "Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"), new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"), new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"), new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"), new Step(new String[] { "Sal" }, "Adicione sal a gosto"), new Step(new String[] {}, "Aguarde a água secar") };
 
 		receita2.setSteps(stepsReceita2);
 
@@ -50,13 +40,12 @@ public class Principal {
 			System.out.println(" ");
 		}
 
-		String menuPrincipal = "\n=== MENU ===" + "\n1. Listar receitas" + "\n2. Cadastrar receita"
-				+ "\n3. Editar receita" + "\n4. Excluir receita" + "\n0. Sair" + "\nSelecione uma opção da lista";
+		String menuPrincipal = "\n=== MENU ===\n1. Listar receitas\n2. Cadastrar receita\n3. Editar receita\n4. Excluir receita\n0. Sair\nSelecione uma opção da lista";
 		int opcaoMenu = -1;
 		while (opcaoMenu != 0) {
 			System.out.println(menuPrincipal);
 
-			Scanner sc = new Scanner(System.in);
+			sc = new Scanner(System.in);
 			try {
 				opcaoMenu = sc.nextInt();
 				if (opcaoMenu > 4 || opcaoMenu < 0) {
@@ -64,34 +53,42 @@ public class Principal {
 				} else {
 					switch (opcaoMenu) {
 					case 1:
-						System.out.println("\nSelecione uma das receitas");
-						int opcaoReceita = -1;
-						for (int i = 0; i < arrayReceita.length; i++) {
-							if (arrayReceita[i] == null)
-								break;
-							System.out.println((i + 1) + " - " + arrayReceita[i].getDescricao());
-						}
-						while (opcaoReceita != 0) {
+						ListarListaReceitas(arrayReceita);
+						int opcaoReceitaListar = -1;
+						while (opcaoReceitaListar != 0) {
 							sc = new Scanner(System.in);
 							try {
-								opcaoReceita = sc.nextInt();
-								if (opcaoReceita < 0 || opcaoReceita > arrayReceita.length) {
+								opcaoReceitaListar = sc.nextInt();
+								if (opcaoReceitaListar < 0 || opcaoReceitaListar > arrayReceita.length) {
 									System.out.println("Digite uma das opções do menu");
 								} else {
-									for (int a = 0; a < arrayReceita[opcaoReceita - 1].getSteps().length; a++) {
-										if (arrayReceita[opcaoReceita - 1].getSteps()[a] == null)
+									for (int a = 0; a < arrayReceita[opcaoReceitaListar - 1].getSteps().length; a++) {
+										if (arrayReceita[opcaoReceitaListar - 1].getSteps()[a] == null)
 											break;
-										System.out.println((a + 1) + " - "
-												+ arrayReceita[opcaoReceita - 1].getSteps()[a].getDescricao());
+										System.out.println((a + 1) + " - " + arrayReceita[opcaoReceitaListar - 1].getSteps()[a].getDescricao());
+										for (int b = 0; b < arrayReceita[opcaoReceitaListar - 1].getSteps()[a].ingredientes.length; b++) {
+											System.out.println("  " + (b + 1) + ". " + arrayReceita[opcaoReceitaListar - 1].getSteps()[a].ingredientes[b]);
+										}
 									}
 								}
-								opcaoReceita = 0;
+								opcaoReceitaListar = 0;
 							} catch (Exception e) {
 								System.out.println("Digite uma opção válida");
 							}
 						}
 						break;
 					case 2:
+						ListarListaReceitas(arrayReceita);
+						int opcaoReceitaCadastrar = -1;
+						while (opcaoReceitaCadastrar != 0) {
+							sc = new Scanner(System.in);
+							try {
+								opcaoReceitaCadastrar = sc.nextInt();
+
+							} catch (Exception e) {
+								System.out.println("Digite uma opção válida");
+							}
+						}
 						break;
 					case 3:
 						break;
@@ -150,137 +147,146 @@ public class Principal {
 //		}
 	}
 
-	private static void listarReceitas() {
-		if (numReceitas == 0) {
-			System.out.println("Nenhuma receita cadastrada.");
-			return;
-		}
-
-		System.out.println("\n=== LISTA DE RECEITAS ===");
-		for (int i = 0; i < numReceitas; i++) {
-			System.out.println((i + 1) + ". " + receitas[i][1]);
+	private static void ListarListaReceitas(Receita[] arrayReceita) {
+		System.out.println("\nSelecione uma das receitas");
+		for (int i = 0; i < arrayReceita.length; i++) {
+			if (arrayReceita[i] == null)
+				break;
+			System.out.println((i + 1) + " - " + arrayReceita[i].getDescricao());
 		}
 	}
 
-	private static void cadastrarReceita() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("\n=== CADASTRAR RECEITA ===");
-		System.out.print("Nome da receita: ");
-		String nome = sc.nextLine();
-
-		System.out.print("ID da pessoa responsável pela receita: ");
-		String id = sc.nextLine();
-
-		receitas[numReceitas][0] = Integer.toString(numReceitas + 1);
-		receitas[numReceitas][1] = nome;
-		receitas[numReceitas][2] = id;
-
-		System.out.print("Quantidade de ingredientes: ");
-		int numIngredientes = sc.nextInt();
-
-		for (int i = 1; i <= numIngredientes; i++) {
-			System.out.print("\nIngrediente " + i + ": ");
-			String ingrediente = sc.next();
-			receitas[numReceitas][2 + i] = ingrediente;
-		}
-
-		numReceitas++;
-		System.out.println("\nReceita cadastrada com sucesso!");
-	}
-
-	private static void editarReceita() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("\n=== EDITAR RECEITA ===");
-		System.out.print("Digite o número da receita que deseja editar: ");
-		int num = sc.nextInt();
-
-		if (num < 1 || num > numReceitas) {
-			System.out.println("Receita não encontrada.");
-			return;
-		}
-		System.out.print("Novo nome da receita: ");
-		String nome = sc.next();
-
-		receitas[num - 1][1] = nome;
-
-		System.out.println("Receita editada com sucesso.");
-	}
-
-	private static void excluirReceita() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("\n=== EXCLUIR RECEITA ===");
-		System.out.print("Digite o número da receita que deseja excluir: ");
-		int num = sc.nextInt();
-
-		if (num < 1 || num > numReceitas) {
-			System.out.println("Receita não encontrada.");
-			return;
-		}
-
-		for (int i = num - 1; i < numReceitas - 1; i++) {
-			receitas[i][0] = receitas[i + 1][0];
-			receitas[i][1] = receitas[i + 1][1];
-			receitas[i][2] = receitas[i + 1][2];
-			receitas[i][3] = receitas[i + 1][3];
-			receitas[i][4] = receitas[i + 1][4];
-			receitas[i][5] = receitas[i + 1][5];
-		}
-
-		numReceitas--;
-		System.out.println("Receita excluída com sucesso.");
-	}
-
-	private static void listarIngredientes() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("\n=== LISTAR INGREDIENTES DE UMA RECEITA ===");
-		System.out.print("Digite o número da receita: ");
-		int num = sc.nextInt();
-
-		if (num < 1 || num > numReceitas) {
-			System.out.println("Receita não encontrada.");
-			return;
-		}
-
-		System.out.println("Ingredientes da receita " + receitas[num - 1][1] + ":");
-
-		for (int i = 3; i < receitas[num - 1].length; i++) {
-			if (receitas[num - 1][i] != null) {
-				System.out.println("- " + receitas[num - 1][i]);
-			}
-		}
-	}
-
-	private static void editarIngredientes() {
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("\n=== EDITAR INGREDIENTES DE UMA RECEITA ===");
-		System.out.print("Digite o número da receita que deseja editar os ingredientes: ");
-		int num = sc.nextInt();
-
-		if (num < 1 || num > numReceitas) {
-			System.out.println("Receita não encontrada.");
-			return;
-		}
-
-		System.out.println("Ingredientes da receita " + receitas[num - 1][1] + ":");
-
-		for (int i = 3; i < receitas[num - 1].length; i++) {
-			if (receitas[num - 1][i] != null) {
-				System.out.println((i - 2) + ". " + receitas[num - 1][i]);
-			}
-		}
-
-		System.out.print("Digite o número do ingrediente que deseja editar: ");
-		int numIngrediente = sc.nextInt();
-
-		if (numIngrediente < 1 || numIngrediente > receitas[num - 1].length - 3
-				|| receitas[num - 1][numIngrediente + 2] == null) {
-			System.out.println("Ingrediente não encontrado.");
-			return;
-		}
-	}
+//	private static void listarReceitas() {
+//		if (numReceitas == 0) {
+//			System.out.println("Nenhuma receita cadastrada.");
+//			return;
+//		}
+//
+//		System.out.println("\n=== LISTA DE RECEITAS ===");
+//		for (int i = 0; i < numReceitas; i++) {
+//			System.out.println((i + 1) + ". " + receitas[i][1]);
+//		}
+//	}
+//
+//	private static void cadastrarReceita() {
+//		Scanner sc = new Scanner(System.in);
+//
+//		System.out.println("\n=== CADASTRAR RECEITA ===");
+//		System.out.print("Nome da receita: ");
+//		String nome = sc.nextLine();
+//
+//		System.out.print("ID da pessoa responsável pela receita: ");
+//		String id = sc.nextLine();
+//
+//		receitas[numReceitas][0] = Integer.toString(numReceitas + 1);
+//		receitas[numReceitas][1] = nome;
+//		receitas[numReceitas][2] = id;
+//
+//		System.out.print("Quantidade de ingredientes: ");
+//		int numIngredientes = sc.nextInt();
+//
+//		for (int i = 1; i <= numIngredientes; i++) {
+//			System.out.print("\nIngrediente " + i + ": ");
+//			String ingrediente = sc.next();
+//			receitas[numReceitas][2 + i] = ingrediente;
+//		}
+//
+//		numReceitas++;
+//		System.out.println("\nReceita cadastrada com sucesso!");
+//	}
+//
+//	private static void editarReceita() {
+//		Scanner sc = new Scanner(System.in);
+//
+//		System.out.println("\n=== EDITAR RECEITA ===");
+//		System.out.print("Digite o número da receita que deseja editar: ");
+//		int num = sc.nextInt();
+//
+//		if (num < 1 || num > numReceitas) {
+//			System.out.println("Receita não encontrada.");
+//			return;
+//		}
+//		System.out.print("Novo nome da receita: ");
+//		String nome = sc.next();
+//
+//		receitas[num - 1][1] = nome;
+//
+//		System.out.println("Receita editada com sucesso.");
+//	}
+//
+//	private static void excluirReceita() {
+//		Scanner sc = new Scanner(System.in);
+//
+//		System.out.println("\n=== EXCLUIR RECEITA ===");
+//		System.out.print("Digite o número da receita que deseja excluir: ");
+//		int num = sc.nextInt();
+//
+//		if (num < 1 || num > numReceitas) {
+//			System.out.println("Receita não encontrada.");
+//			return;
+//		}
+//
+//		for (int i = num - 1; i < numReceitas - 1; i++) {
+//			receitas[i][0] = receitas[i + 1][0];
+//			receitas[i][1] = receitas[i + 1][1];
+//			receitas[i][2] = receitas[i + 1][2];
+//			receitas[i][3] = receitas[i + 1][3];
+//			receitas[i][4] = receitas[i + 1][4];
+//			receitas[i][5] = receitas[i + 1][5];
+//		}
+//
+//		numReceitas--;
+//		System.out.println("Receita excluída com sucesso.");
+//	}
+//
+//	private static void listarIngredientes() {
+//		Scanner sc = new Scanner(System.in);
+//
+//		System.out.println("\n=== LISTAR INGREDIENTES DE UMA RECEITA ===");
+//		System.out.print("Digite o número da receita: ");
+//		int num = sc.nextInt();
+//
+//		if (num < 1 || num > numReceitas) {
+//			System.out.println("Receita não encontrada.");
+//			return;
+//		}
+//
+//		System.out.println("Ingredientes da receita " + receitas[num - 1][1] + ":");
+//
+//		for (int i = 3; i < receitas[num - 1].length; i++) {
+//			if (receitas[num - 1][i] != null) {
+//				System.out.println("- " + receitas[num - 1][i]);
+//			}
+//		}
+//	}
+//
+//	private static void editarIngredientes() {
+//		Scanner sc = new Scanner(System.in);
+//
+//		System.out.println("\n=== EDITAR INGREDIENTES DE UMA RECEITA ===");
+//		System.out.print("Digite o número da receita que deseja editar os ingredientes: ");
+//		int num = sc.nextInt();
+//
+//		if (num < 1 || num > numReceitas) {
+//			System.out.println("Receita não encontrada.");
+//			return;
+//		}
+//
+//		System.out.println("Ingredientes da receita " + receitas[num - 1][1] + ":");
+//
+//		for (int i = 3; i < receitas[num - 1].length; i++) {
+//			if (receitas[num - 1][i] != null) {
+//				System.out.println((i - 2) + ". " + receitas[num - 1][i]);
+//			}
+//		}
+//
+//		System.out.print("Digite o número do ingrediente que deseja editar: ");
+//		int numIngrediente = sc.nextInt();
+//
+//		if (numIngrediente < 1 || numIngrediente > receitas[num - 1].length - 3
+//				|| receitas[num - 1][numIngrediente + 2] == null) {
+//			System.out.println("Ingrediente não encontrado.");
+//			return;
+//		}
+//	}
 }
