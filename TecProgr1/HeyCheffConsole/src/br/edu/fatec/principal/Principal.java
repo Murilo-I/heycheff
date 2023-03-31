@@ -15,68 +15,139 @@ public class Principal {
 
 		Receita receita1 = new Receita("Ovo Frito");
 		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"),
-				new Step(new String[] { "Manteiga", "Azeita" },
+				new Step(new String[] { "Manteiga", "Azeite" },
 						"Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"),
 				new Step(new String[] { "Sal" }, "Adicione Sal a gosto"),
 				new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
 
 		receita1.setSteps(stepsReceita1);
 
+		Receita receita2 = new Receita("Arroz Cozido");
+		Step[] stepsReceita2 = { new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"),
+				new Step(new String[] { "Azeite" },
+						"Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"),
+				new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"),
+				new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"),
+				new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"),
+				new Step(new String[] { "Sal" }, "Adicione sal a gosto"),
+				new Step(new String[] {}, "Aguarde a água secar") };
+
+		receita2.setSteps(stepsReceita2);
+
 		Receita[] arrayReceita = new Receita[100];
 		arrayReceita[0] = receita1;
-		
-		for(int i=0;i<arrayReceita.length;i++) {
-			if(arrayReceita[i] == null) break;
-			System.out.println(arrayReceita[i].getId() + " - " + arrayReceita[i].getDescricao());
-			
+		arrayReceita[1] = receita2;
+
+		for (int i = 0; i < arrayReceita.length; i++) {
+			if (arrayReceita[i] == null)
+				break;
+			System.out.println((i + 1) + " - " + arrayReceita[i].getDescricao());
+			for (int a = 0; a < arrayReceita[i].getSteps().length; a++) {
+				if (arrayReceita[i].getSteps()[a] == null)
+					break;
+				System.out.println((a + 1) + " - " + arrayReceita[i].getSteps()[a].getDescricao());
+			}
+			System.out.println(" ");
 		}
 
-		Scanner sc = new Scanner(System.in);
+		String menuPrincipal = "\n=== MENU ===" + "\n1. Listar receitas" + "\n2. Cadastrar receita"
+				+ "\n3. Editar receita" + "\n4. Excluir receita" + "\n0. Sair" + "\nSelecione uma opção da lista";
+		int opcaoMenu = -1;
+		while (opcaoMenu != 0) {
+			System.out.println(menuPrincipal);
 
-		while (true) {
-			System.out.println("\n=== MENU ===");
-			System.out.println("1. Listar receitas");
-			System.out.println("2. Cadastrar receita");
-			System.out.println("3. Editar receita");
-			System.out.println("4. Excluir receita");
-			System.out.println("5. Listar ingredientes de uma receita");
-			System.out.println("6. Editar ingredientes de uma receita");
-			System.out.println("7. Sair");
-
-			System.out.print("\nEscolha uma opção(Números de 1 a 7): ");
-			int opcao = sc.nextInt();
-
-			switch (opcao) {
-			case 1:
-				listarReceitas();
-				break;
-			case 2:
-				cadastrarReceita();
-				break;
-			case 3:
-				editarReceita();
-				break;
-			case 4:
-				excluirReceita();
-				break;
-			case 5:
-				listarIngredientes();
-				break;
-			case 6:
-				editarIngredientes();
-				break;
-			case 7:
-				System.out.println("");
-				System.out.println("Encerrando o programa...");
-				System.out.println("Programa encerrado com sucesso!");
-				System.exit(0);
-
-				break;
-			default:
-				System.out.println(
-						"Opção inválida, Por favor insira um número que seja válido dentro das opções listadas!");
+			Scanner sc = new Scanner(System.in);
+			try {
+				opcaoMenu = sc.nextInt();
+				if (opcaoMenu > 4 || opcaoMenu < 0) {
+					System.out.println("Digite uma das opções do menu");
+				} else {
+					switch (opcaoMenu) {
+					case 1:
+						System.out.println("\nSelecione uma das receitas");
+						int opcaoReceita = -1;
+						for (int i = 0; i < arrayReceita.length; i++) {
+							if (arrayReceita[i] == null)
+								break;
+							System.out.println((i + 1) + " - " + arrayReceita[i].getDescricao());
+						}
+						while (opcaoReceita != 0) {
+							sc = new Scanner(System.in);
+							try {
+								opcaoReceita = sc.nextInt();
+								if (opcaoReceita < 0 || opcaoReceita > arrayReceita.length) {
+									System.out.println("Digite uma das opções do menu");
+								} else {
+									for (int a = 0; a < arrayReceita[opcaoReceita - 1].getSteps().length; a++) {
+										if (arrayReceita[opcaoReceita - 1].getSteps()[a] == null)
+											break;
+										System.out.println((a + 1) + " - "
+												+ arrayReceita[opcaoReceita - 1].getSteps()[a].getDescricao());
+									}
+								}
+								opcaoReceita = 0;
+							} catch (Exception e) {
+								System.out.println("Digite uma opção válida");
+							}
+						}
+						break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						break;
+					}
+				}
+			} catch (Exception e) {
+				System.out.println("Digite uma opção válida");
 			}
 		}
+
+//		while (true) {
+//			System.out.println("\n=== MENU ===");
+//			System.out.println("1. Listar receitas");
+//			System.out.println("2. Cadastrar receita");
+//			System.out.println("3. Editar receita");
+//			System.out.println("4. Excluir receita");
+//			System.out.println("5. Listar ingredientes de uma receita");
+//			System.out.println("6. Editar ingredientes de uma receita");
+//			System.out.println("7. Sair");
+//
+//			System.out.print("\nEscolha uma opção(Números de 1 a 7): ");
+//			int opcao = sc.nextInt();
+//
+//			switch (opcao) {
+//			case 1:
+//				listarReceitas();
+//				break;
+//			case 2:
+//				cadastrarReceita();
+//				break;
+//			case 3:
+//				editarReceita();
+//				break;
+//			case 4:
+//				excluirReceita();
+//				break;
+//			case 5:
+//				listarIngredientes();
+//				break;
+//			case 6:
+//				editarIngredientes();
+//				break;
+//			case 7:
+//				System.out.println("");
+//				System.out.println("Encerrando o programa...");
+//				System.out.println("Programa encerrado com sucesso!");
+//				System.exit(0);
+//
+//				break;
+//			default:
+//				System.out.println(
+//						"Opção inválida, Por favor insira um número que seja válido dentro das opções listadas!");
+//			}
+//		}
 	}
 
 	private static void listarReceitas() {
