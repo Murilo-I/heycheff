@@ -15,12 +15,22 @@ public class Principal {
 	public static void main(String[] args) {
 
 		Receita receita1 = new Receita("Ovo Frito");
-		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"), new Step(new String[] { "Manteiga", "Azeite" }, "Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"), new Step(new String[] { "Sal" }, "Adicione Sal a gosto"), new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
+		Step[] stepsReceita1 = { 
+				new Step(new String[] { "Ovo" }, "Quebrar ovo"),
+				new Step(new String[] { "Manteiga", "Azeite" }, "Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"),
+				new Step(new String[] { "Sal" }, "Adicione Sal a gosto"),
+				new Step(new String[] {}, "Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado") };
 
 		receita1.setSteps(stepsReceita1);
 
 		Receita receita2 = new Receita("Arroz Cozido");
-		Step[] stepsReceita2 = { new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"), new Step(new String[] { "Azeite" }, "Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"), new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"), new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"), new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"), new Step(new String[] { "Sal" }, "Adicione sal a gosto"), new Step(new String[] {}, "Aguarde a água secar") };
+		Step[] stepsReceita2 = { 
+				new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"),
+				new Step(new String[] { "Azeite" }, "Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"),
+				new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"),
+				new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"),
+				new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"), new Step(new String[] { "Sal" }, "Adicione sal a gosto"),
+				new Step(new String[] {}, "Aguarde a água secar") };
 
 		receita2.setSteps(stepsReceita2);
 
@@ -46,7 +56,7 @@ public class Principal {
 			System.out.println(menuPrincipal);
 
 			sc = new Scanner(System.in);
-			try {
+			//try {
 				opcaoMenu = sc.nextInt();
 				if (opcaoMenu > 4 || opcaoMenu < 0) {
 					System.out.println("Digite uma das opções do menu");
@@ -78,17 +88,33 @@ public class Principal {
 						}
 						break;
 					case 2:
-						ListarListaReceitas(arrayReceita);
-						int opcaoReceitaCadastrar = -1;
-						while (opcaoReceitaCadastrar != 0) {
-							sc = new Scanner(System.in);
-							try {
-								opcaoReceitaCadastrar = sc.nextInt();
-
-							} catch (Exception e) {
-								System.out.println("Digite uma opção válida");
-							}
+						//ListarListaReceitas(arrayReceita);
+						System.out.println("Digite a descrição da sua receita");
+						//sc = new Scanner(System.in);
+						Receita receita = new Receita(new Scanner(System.in).next());
+						receita.addStep(new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"));
+						receita.addStep(new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver22"));
+						
+						for (Step step : receita.getSteps()) {
+							System.out.println(step.getDescricao());
 						}
+						
+						
+						int opcaoFinalizarSteps = -1;
+//						
+//						
+//						
+//						do {
+//							
+//							System.out.println("Deseja adicionar mais um passo?\nDigite uma das seguintes opções:\n0. Não\n1. Sim");
+//							try {
+//								opcaoFinalizarSteps = new Scanner(System.in).nextInt();
+//							} catch (Exception e) {
+//								System.out.println("Digite uma opção válida");
+//							}
+//						} while (opcaoFinalizarSteps != 0);
+						//Step step = new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver");
+						
 						break;
 					case 3:
 						break;
@@ -96,9 +122,9 @@ public class Principal {
 						break;
 					}
 				}
-			} catch (Exception e) {
-				System.out.println("Digite uma opção válida");
-			}
+//			} catch (Exception e) {
+//				System.out.println("Digite uma opção válida");
+//			}
 		}
 
 //		while (true) {
