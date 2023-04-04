@@ -37,115 +37,149 @@ public class Principal {
 		int opcaoMenu = -1;
 		while (opcaoMenu != 0) {
 			System.out.println(menuPrincipal);
-//			try {
-			sc = new Scanner(System.in);
-			opcaoMenu = sc.nextInt();
-			if (opcaoMenu > 4 || opcaoMenu < 0) {
-				System.out.println("Digite uma das opções do menu");
-			} else {
-				switch (opcaoMenu) {
-				case 1:
-					listarListaReceitas(arrayReceitas);
-					int opcaoReceitaListar = -1;
-					while (opcaoReceitaListar != 0) {
-						sc = new Scanner(System.in);
-						try {
-							opcaoReceitaListar = sc.nextInt();
-							if (opcaoReceitaListar < 1 || opcaoReceitaListar > arrayReceitas.length) {
-								System.out.println("Digite uma das opções do menu");
-							} else {
-								for (int a = 0; a < arrayReceitas[opcaoReceitaListar - 1].getSteps().length; a++) {
-									if (arrayReceitas[opcaoReceitaListar - 1].getSteps()[a] == null)
-										break;
-									System.out.println((a + 1) + ". " + arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].getDescricao());
-									for (int b = 0; b < arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].ingredientes.length; b++) {
-										System.out.println("  " + (b + 1) + ". " + arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].ingredientes[b]);
-									}
-								}
-								opcaoReceitaListar = 0;
-							}
-						} catch (Exception e) {
-							System.out.println("Digite uma opção válida");
-						}
-					}
-					break;
-				case 2:
-					System.out.println("Digite a descrição da sua receita");
-					Receita receita = new Receita(new Scanner(System.in).next());
-					boolean opcaoFinalizarSteps = true;
-					int sequenciaPassos = 1;
-					do {
-
-						System.out.println("Digite o passo número " + sequenciaPassos);
-						Step step = new Step(new Scanner(System.in).next());
-
-						boolean opcaoMaisIngredintes = true;
-						int sequenciaIngredientes = 1;
-						do {
-							System.out.println("Digite o ingrediente " + sequenciaIngredientes);
-							step.addIngrediente(new Scanner(System.in).next());
-							sequenciaIngredientes++;
-							System.out.println("Deseja adicionar mais um ingrediente?\nDigite uma das seguintes opções:\n0. Não\n1. Sim");
-							int finalizarIngredientes = -1;
-							while (finalizarIngredientes != 0 && finalizarIngredientes != 1) {
-								try {
-									finalizarIngredientes = new Scanner(System.in).nextInt();
-									if (finalizarIngredientes == 0)
-										opcaoMaisIngredintes = false;
-								} catch (Exception e) {
-									System.out.println("Digite uma opção válida");
-								}
-							}
-						} while (opcaoMaisIngredintes);
-
-						sequenciaPassos++;
-
-						System.out.println("Deseja adicionar mais um passo?\nDigite uma das seguintes opções:\n0. Não\n1. Sim");
-						int finalizarPasso = -1;
-						while (finalizarPasso != 0 && finalizarPasso != 1) {
+			try {
+				sc = new Scanner(System.in);
+				opcaoMenu = sc.nextInt();
+				if (opcaoMenu > 4 || opcaoMenu < 0) {
+					System.out.println("Digite uma das opções do menu");
+				} else {
+					switch (opcaoMenu) {
+					case 1:
+						listarListaReceitas(arrayReceitas);
+						System.out.println("0. Cancelar");
+						int opcaoReceitaListar = -1;
+						while (opcaoReceitaListar != 0) {
+							sc = new Scanner(System.in);
 							try {
-								finalizarPasso = new Scanner(System.in).nextInt();
-								if (finalizarPasso == 0)
-									opcaoFinalizarSteps = false;
+								opcaoReceitaListar = sc.nextInt();
+								if (opcaoReceitaListar < 1 || opcaoReceitaListar > arrayReceitas.length) {
+									if (opcaoReceitaListar != 0)
+										System.out.println("Digite uma das opções do menu");
+								} else {
+									for (int a = 0; a < arrayReceitas[opcaoReceitaListar - 1].getSteps().length; a++) {
+										if (arrayReceitas[opcaoReceitaListar - 1].getSteps()[a] == null)
+											break;
+										System.out.println((a + 1) + ". " + arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].getDescricao());
+										for (int b = 0; b < arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].ingredientes.length; b++) {
+											System.out.println("  " + (b + 1) + ". " + arrayReceitas[opcaoReceitaListar - 1].getSteps()[a].ingredientes[b]);
+										}
+									}
+									opcaoReceitaListar = 0;
+								}
 							} catch (Exception e) {
 								System.out.println("Digite uma opção válida");
 							}
 						}
-
-					} while (opcaoFinalizarSteps);
-
-					addReceita(receita);
-
-					break;
-				case 3:
-					
-					listarListaReceitas(arrayReceitas);
-					int opcaoReceitaAtualizar = -1;
-					while (opcaoReceitaAtualizar != 0) {
-						sc = new Scanner(System.in);
-						try {
-							opcaoReceitaAtualizar = sc.nextInt();
-							if (opcaoReceitaAtualizar < 0 || opcaoReceitaAtualizar > arrayReceitas.length) {
-								System.out.println("Digite uma das opções do menu para fazer a edição");
-							} else {
-								
+						break;
+					case 2:
+						System.out.println("Digite a descrição da sua receita");
+						Receita receita = new Receita(new Scanner(System.in).next());
+						adicionarPassos(receita);
+						addReceita(receita);
+						break;
+					case 3:
+						listarListaReceitas(arrayReceitas);
+						System.out.println("0. Cancelar");
+						int opcaoReceitaAtualizar = -1;
+						while (opcaoReceitaAtualizar != 0) {
+							sc = new Scanner(System.in);
+							try {
+								opcaoReceitaAtualizar = sc.nextInt();
+								if (opcaoReceitaAtualizar < 1 || opcaoReceitaAtualizar > arrayReceitas.length) {
+									if (opcaoReceitaAtualizar != 0)
+										System.out.println("Digite uma das opções do menu para fazer a edição");
+								} else {
+									System.out.println("Digite a nova descrição da receita");
+									Receita receitaEditar = new Receita(new Scanner(System.in).next());
+									adicionarPassos(receitaEditar);
+									arrayReceitas[opcaoReceitaAtualizar - 1] = receitaEditar;
+									System.out.println("Edição finalizada");
+									opcaoReceitaAtualizar = 0;
+								}
+							} catch (Exception e) {
+								System.out.println("Digite uma opção válida");
 							}
-							System.out.println("Edição completa");
-							opcaoReceitaAtualizar = 0;
-						} catch (Exception e) {
-							System.out.println("Digite uma opção válida");
 						}
+						break;
+					case 4:
+						listarListaReceitas(arrayReceitas);
+						System.out.println("0. Cancelar");
+						int opcaoReceitaDeletar = -1;
+						while (opcaoReceitaDeletar != 0) {
+							sc = new Scanner(System.in);
+							try {
+								opcaoReceitaDeletar = sc.nextInt();
+								if (opcaoReceitaDeletar < 1 || opcaoReceitaDeletar > arrayReceitas.length) {
+									if (opcaoReceitaDeletar != 0)
+										System.out.println("Digite uma das opções do menu para apagar");
+								} else {
+									Receita[] novaLista = arrayReceitas.clone();
+									arrayReceitas = null;
+									for (int i = 0; i < novaLista.length; i++) {
+										if (i != opcaoReceitaDeletar - 1) {
+											addReceita(novaLista[i]);
+										}
+									}
+									System.out.println("Edição finalizada");
+									opcaoReceitaDeletar = 0;
+								}
+							} catch (Exception e) {
+								System.out.println("Digite uma opção válida");
+							}
+						}
+						break;
 					}
-					
-					break;
-				case 4:
-					break;
+				}
+			} catch (Exception e) {
+				System.out.println("Digite uma opção válida");
+			}
+		}
+	}
+
+	private static void adicionarPassos(Receita receita) {
+		boolean opcaoFinalizarSteps = true;
+		int sequenciaPassos = 1;
+		do {
+
+			System.out.println("Digite o passo número " + sequenciaPassos);
+			Step step = new Step(new Scanner(System.in).next());
+
+			boolean opcaoMaisIngredintes = true;
+			int sequenciaIngredientes = 1;
+			do {
+				System.out.println("Digite o ingrediente " + sequenciaIngredientes);
+				step.addIngrediente(new Scanner(System.in).next());
+				sequenciaIngredientes++;
+				System.out.println("Deseja adicionar mais um ingrediente?\nDigite uma das seguintes opções:\n0. Não\n1. Sim");
+				int finalizarIngredientes = -1;
+				while (finalizarIngredientes != 0 && finalizarIngredientes != 1) {
+					try {
+						finalizarIngredientes = new Scanner(System.in).nextInt();
+						if (finalizarIngredientes == 0)
+							opcaoMaisIngredintes = false;
+					} catch (Exception e) {
+						System.out.println("Digite uma opção válida");
+					}
+				}
+			} while (opcaoMaisIngredintes);
+
+			sequenciaPassos++;
+
+			System.out.println("Deseja adicionar mais um passo?\nDigite uma das seguintes opções:\n0. Não\n1. Sim");
+			int finalizarPasso = -1;
+			while (finalizarPasso != 0 && finalizarPasso != 1) {
+				try {
+					finalizarPasso = new Scanner(System.in).nextInt();
+					if (finalizarPasso == 0)
+						opcaoFinalizarSteps = false;
+				} catch (Exception e) {
+					System.out.println("Digite uma opção válida");
 				}
 			}
-//			} catch (Exception e) {
-//				System.out.println("Digite uma opção válida");
-//			}
-		}
+
+			receita.addStep(step);
+
+		} while (opcaoFinalizarSteps);
 	}
 
 	private static void listarListaReceitas(Receita[] arrayReceita) {
@@ -153,10 +187,10 @@ public class Principal {
 		for (int i = 0; i < arrayReceita.length; i++) {
 			if (arrayReceita[i] == null)
 				break;
-			System.out.println((i + 1) + " - " + arrayReceita[i].getDescricao());
+			System.out.println((i + 1) + ". " + arrayReceita[i].getDescricao());
 		}
 	}
-	
+
 	public static void addReceita(Receita receita) {
 		Receita[] novaReceita;
 		if (Principal.arrayReceitas == null) {
