@@ -45,6 +45,7 @@ public class Principal {
 				} else {
 					switch (opcaoMenu) {
 					case 1:
+						System.out.println("\n<< OPÇÃO 1 - LISTAR RECEITAS >>\n");
 						listarListaReceitas(arrayReceitas);
 						System.out.println("0. Cancelar");
 						int opcaoReceitaListar = -1;
@@ -72,12 +73,14 @@ public class Principal {
 						}
 						break;
 					case 2:
+						System.out.println("\n<< OPÇÃO 2 - CADASTRAR RECEITA >>\n");
 						System.out.println("Digite a descrição da sua receita");
 						Receita receita = new Receita(new Scanner(System.in).next());
 						adicionarPassos(receita);
 						addReceita(receita);
 						break;
 					case 3:
+						System.out.println("\n<< OPÇÃO 3 - EDITAR RECEITA >>\n");
 						listarListaReceitas(arrayReceitas);
 						System.out.println("0. Cancelar");
 						int opcaoReceitaAtualizar = -1;
@@ -102,6 +105,7 @@ public class Principal {
 						}
 						break;
 					case 4:
+						System.out.println("\n<< OPÇÃO 4 - EXCLUIR RECEITA >>\n");
 						listarListaReceitas(arrayReceitas);
 						System.out.println("0. Cancelar");
 						int opcaoReceitaDeletar = -1;
