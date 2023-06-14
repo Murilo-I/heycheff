@@ -1,11 +1,16 @@
 package br.edu.fatec.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Receita {
 	private String descricao;
 	private Step[] steps;
+	private List<Step> listStep;
 
 	public Receita(String descricao) {
 		this.descricao = descricao;
+		this.listStep = new ArrayList<Step>();
 	}
 
 	public String getDescricao() {
@@ -14,6 +19,10 @@ public class Receita {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public List<Step> getListSteps(){
+		return this.listStep;
 	}
 
 	public Step[] getSteps() {
