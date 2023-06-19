@@ -2,6 +2,7 @@ package br.com.heycheff.view;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -137,6 +138,7 @@ public class CadastroReceita {
 			listStep.removeListSelectionListener(this.listenerReloadStep);
 			listModelStep.clear();
 			receita.getListaStep().forEach(step -> listModelStep.addElement(step));
+			receita.atualizaStep();
 			lbQtdStep.setText("Quantidade: " + listModelStep.getSize());
 			listStep.addListSelectionListener(this.listenerReloadStep);
 		};
@@ -148,6 +150,7 @@ public class CadastroReceita {
 	private JButton getBtnAddStep() {
 		JButton btnAddStep = new JButton("Adicionar Step");
 		btnAddStep.setForeground(Color.WHITE);
+		btnAddStep.setMnemonic(KeyEvent.VK_A);		
 		btnAddStep.setBackground(new Color(244, 70, 70));
 		btnAddStep.setBounds(165, 420, 150, 30);
 
@@ -160,6 +163,7 @@ public class CadastroReceita {
 	private JButton getBtnsalvar() {
 		JButton btnSalvar = new JButton("Salvar Receita");
 		btnSalvar.setForeground(Color.WHITE);
+		btnSalvar.setMnemonic(KeyEvent.VK_S);
 		btnSalvar.setBackground(new Color(244, 70, 70));
 		btnSalvar.setBounds(larJanela - 170, 420, 150, 30);
 

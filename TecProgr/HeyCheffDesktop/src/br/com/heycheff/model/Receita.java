@@ -3,6 +3,7 @@ package br.com.heycheff.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Receita {
     private String descricao;
     List<Step> listaStep = new ArrayList<>();
@@ -40,4 +41,14 @@ public class Receita {
     public String toString() {
         return descricao;
     }
+    
+	public void  atualizaStep() {
+		int s = 1;
+		for (Step step : listaStep) {
+			step.setNumero(s);
+			s++;
+			
+		}
+		
+	}
 }
