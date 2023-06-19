@@ -1,19 +1,14 @@
 package br.com.heycheff.view;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.io.InputStream;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 
 import br.com.heycheff.DAO.ReceitaDAO;
@@ -32,7 +27,7 @@ public class CadastroReceita {
 	private ListSelectionListener listenerReloadStep;
 
 	private Receita receita = new Receita();
-	private ReceitaDAO recDAO = new ReceitaDAO();
+	private final ReceitaDAO recDAO;
 
 	public CadastroReceita(ReceitaDAO recDAO) {
 		this.recDAO = recDAO;
@@ -53,12 +48,13 @@ public class CadastroReceita {
 
 		janela.getContentPane().setLayout(null);
 
+		janela.getContentPane().add(getLogo());
 		janela.getContentPane().add(getLbTitulo());
 		janela.getContentPane().add(getTxtTitulo());
 
 		janela.getContentPane().add(getLbStep());
 		janela.getContentPane().add(getLbQtdStep());
-		janela.getContentPane().add(getLbIngrediente());
+		janela.getContentPane().add(getLbIngre());
 
 		janela.getContentPane().add(getPainelStep());
 		janela.getContentPane().add(getPainelIngre());
@@ -95,7 +91,7 @@ public class CadastroReceita {
 
 		listStep.addListSelectionListener(listenerReloadStep);
 		JScrollPane painel = new JScrollPane(listStep);
-		painel.setBounds(10, 80, larJanela - 30, 150);
+		painel.setBounds(10, 90, larJanela - 30, 140);
 		return painel;
 	}
 
@@ -103,7 +99,7 @@ public class CadastroReceita {
 		listModelIngre = new DefaultListModel<>();
 		JList<Ingrediente> listIngre = new JList<>(listModelIngre);
 		JScrollPane painel = new JScrollPane(listIngre);
-		painel.setBounds(10, 260, larJanela - 30, 150);
+		painel.setBounds(10, 270, larJanela - 30, 140);
 		return painel;
 	}
 
@@ -195,23 +191,23 @@ public class CadastroReceita {
 	private JLabel getLbStep() {
 		JLabel lbStep = new JLabel("Step's: ");
 		lbStep.setForeground(Color.black);
-		lbStep.setBounds(10, 50, 150, 30);
+		lbStep.setBounds(10, 60, 150, 30);
 		lbStep.setForeground(Color.black);
 		return lbStep;
 	}
 	
-	private JLabel getLbIngrediente() {
-		JLabel lbIngrediente = new JLabel("Ingredientes / Utensílios: ");
-		lbIngrediente.setForeground(Color.black);
-		lbIngrediente.setBounds(10, 230, 150, 30);
-		lbIngrediente.setForeground(Color.black);
-		return lbIngrediente;
+	private JLabel getLbIngre() {
+		JLabel lbIngre = new JLabel("Ingredientes / Utensílios: ");
+		lbIngre.setForeground(Color.black);
+		lbIngre.setBounds(10, 240, 150, 30);
+		lbIngre.setForeground(Color.black);
+		return lbIngre;
 	}
 
 	private JLabel getLbQtdStep() {
 		lbQtdStep = new JLabel("Quantidade: 0");
 		lbQtdStep.setForeground(Color.black);
-		lbQtdStep.setBounds(larJanela - 100, 50, 150, 30);
+		lbQtdStep.setBounds(larJanela - 105, 60, 150, 30);
 		lbQtdStep.setForeground(Color.black);
 		return lbQtdStep;
 	}
@@ -220,5 +216,18 @@ public class CadastroReceita {
 		txtTitulo = new JTextField(receita.getDescricao() == null ? "" : receita.getDescricao(), JTextField.RIGHT);
 		txtTitulo.setBounds(150, 10, larJanela - 250, 30);
 		return txtTitulo;
+	}
+
+	private JLabel getLogo() {
+		try {
+			InputStream stream = getClass().getResourceAsStream("/assets/hey_cheff_black.png");
+			Image image = ImageIO.read(stream);
+			ImageIcon icon = new ImageIcon(image);
+			JLabel logo = new JLabel(icon);
+			logo.setBounds(larJanela - 62, 10, 42, 56);
+			return logo;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

@@ -4,3 +4,4 @@ bin/
 .project
 .idea/
 HeyCheffDesktop.iml
+out/

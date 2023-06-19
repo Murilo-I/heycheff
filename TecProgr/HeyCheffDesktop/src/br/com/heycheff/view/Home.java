@@ -3,12 +3,15 @@ package br.com.heycheff.view;
 import br.com.heycheff.DAO.ReceitaDAO;
 import br.com.heycheff.model.Receita;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class Home {
-	private JLabel lbQtdIngr;
+	private JLabel lbQtdRec;
 	private JList<Receita> listReceita;
 	private DefaultListModel<Receita> listModel;
 	private JFrame janela;
@@ -29,9 +32,10 @@ public class Home {
 
 		janela.getContentPane().setLayout(null);
 
-		janela.getContentPane().add(getLbIngre());
-		janela.getContentPane().add(getLbQtdIngr());
-
+		janela.getContentPane().add(getLogo());
+		janela.getContentPane().add(getTitulo());
+		janela.getContentPane().add(getLbReceita());
+		janela.getContentPane().add(getLbQtdRec());
 		janela.getContentPane().add(getPainel());
 
 		janela.getContentPane().add(getBtnDel());
@@ -41,7 +45,7 @@ public class Home {
 		janela.setUndecorated(true);
 
 		recDAO.getLista().forEach(r -> listModel.addElement(r));
-		lbQtdIngr.setText("Quantidade: " + listModel.getSize());
+		lbQtdRec.setText("Quantidade: " + listModel.getSize());
 
 		janela.getRootPane().setWindowDecorationStyle(JRootPane.PLAIN_DIALOG);
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,7 +59,7 @@ public class Home {
 		listReceita = new JList<>(listModel);
 
 		JScrollPane painel = new JScrollPane(listReceita);
-		painel.setBounds(10, 35, larJanela - 25, altJanela - 150);
+		painel.setBounds(10, 100, larJanela - 30, altJanela - 210);
 		return painel;
 	}
 
@@ -69,7 +73,7 @@ public class Home {
 			if (listReceita.getSelectedIndex() >= 0) {
 				int index = listReceita.getSelectedIndex();
 				listModel.remove(index);
-				lbQtdIngr.setText("Quantidade: " + listModel.getSize());
+				lbQtdRec.setText("Quantidade: " + listModel.getSize());
 				recDAO.remove(index);
 			} else {
 				JOptionPane.showMessageDialog(null, "Selecione uma Receita", "AVISO", JOptionPane.ERROR_MESSAGE);
@@ -117,20 +121,39 @@ public class Home {
 		return btnReload;
 	}
 
-	private JLabel getLbIngre() {
-		JLabel lbIngre = new JLabel("Receitas: ");
-		lbIngre.setForeground(Color.black);
-		lbIngre.setBounds(10, 10, 150, 30);
-		lbIngre.setForeground(Color.black);
-		return lbIngre;
+	private JLabel getLbReceita() {
+		JLabel lbReceita = new JLabel("Receitas: ");
+		lbReceita.setForeground(Color.black);
+		lbReceita.setBounds(10, 75, 150, 30);
+		lbReceita.setForeground(Color.black);
+		return lbReceita;
 	}
 
-	private JLabel getLbQtdIngr() {
-		lbQtdIngr = new JLabel("Quantidade: 0");
-		lbQtdIngr.setForeground(Color.black);
-		lbQtdIngr.setBounds(larJanela - 100, 10, 150, 30);
-		lbQtdIngr.setForeground(Color.black);
-		return lbQtdIngr;
+	private JLabel getLbQtdRec() {
+		lbQtdRec = new JLabel("Quantidade: 0");
+		lbQtdRec.setForeground(Color.black);
+		lbQtdRec.setBounds(larJanela - 105, 75, 150, 30);
+		lbQtdRec.setForeground(Color.black);
+		return lbQtdRec;
 	}
 
+	private JLabel getTitulo() {
+		JLabel titulo = new JLabel("HEY CHEFF", JLabel.CENTER);
+		titulo.setBounds(0, 10, larJanela, 60);
+		titulo.setFont(new Font("Serif", Font.PLAIN, 60));
+		return titulo;
+	}
+
+	private JLabel getLogo() {
+		try {
+			InputStream stream = getClass().getResourceAsStream("/assets/hey_cheff_black.png");
+			Image image = ImageIO.read(stream);
+			ImageIcon icon = new ImageIcon(image);
+			JLabel logo = new JLabel(icon);
+			logo.setBounds(larJanela - 62, 10, 42, 56);
+			return logo;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

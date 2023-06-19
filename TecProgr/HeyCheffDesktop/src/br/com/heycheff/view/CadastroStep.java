@@ -4,9 +4,12 @@ import br.com.heycheff.model.Ingrediente;
 import br.com.heycheff.model.Receita;
 import br.com.heycheff.model.Step;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CadastroStep {
 	private JLabel lbQtdIngr;
@@ -32,6 +35,7 @@ public class CadastroStep {
 
 		janela.getContentPane().setLayout(null);
 
+		janela.getContentPane().add(getLogo());
 		janela.getContentPane().add(getLbDesc());
 		janela.getContentPane().add(getTxtDesc());
 
@@ -55,7 +59,7 @@ public class CadastroStep {
 		listIngrediente = new JList<>(listModel);
 
 		JScrollPane painel = new JScrollPane(listIngrediente);
-		painel.setBounds(10, 100, larJanela - 30, 150);
+		painel.setBounds(10, 150, larJanela - 30, 150);
 		return painel;
 	}
 
@@ -137,7 +141,7 @@ public class CadastroStep {
 	private JLabel getLbIngre() {
 		JLabel lbIngre = new JLabel("Ingredientes / Utensílios: ");
 		lbIngre.setForeground(Color.black);
-		lbIngre.setBounds(10, 70, 150, 30);
+		lbIngre.setBounds(10, 120, 150, 30);
 		lbIngre.setForeground(Color.black);
 		return lbIngre;
 	}
@@ -145,7 +149,7 @@ public class CadastroStep {
 	private JLabel getLbQtdIngr() {
 		lbQtdIngr = new JLabel("Quantidade: 0");
 		lbQtdIngr.setForeground(Color.black);
-		lbQtdIngr.setBounds(larJanela - 100, 70, 150, 30);
+		lbQtdIngr.setBounds(larJanela - 105, 120, 150, 30);
 		lbQtdIngr.setForeground(Color.black);
 		return lbQtdIngr;
 	}
@@ -154,5 +158,18 @@ public class CadastroStep {
 		txtDesc = new JTextField("", JTextField.RIGHT);
 		txtDesc.setBounds(150, 10, larJanela - 250, 30);
 		return txtDesc;
+	}
+
+	private JLabel getLogo() {
+		try {
+			InputStream stream = getClass().getResourceAsStream("/assets/hey_cheff_black.png");
+			Image image = ImageIO.read(stream);
+			ImageIcon icon = new ImageIcon(image);
+			JLabel logo = new JLabel(icon);
+			logo.setBounds(larJanela - 62, 10, 42, 56);
+			return logo;
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
