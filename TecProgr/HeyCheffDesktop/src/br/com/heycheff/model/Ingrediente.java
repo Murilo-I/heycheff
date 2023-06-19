@@ -12,6 +12,6 @@ public class Ingrediente {
 
     @Override
     public String toString() {
-        return quantidade + " - " + descricao;
+        return "qtd: " + quantidade + " - " + descricao;
     }
 }

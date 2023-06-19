@@ -15,6 +15,10 @@ public class ReceitaDAO {
     public void remove(int indice) {
         lista.remove(indice);
     }
+    
+    public void remove(Receita receita) {
+    	lista.remove(receita);
+    }
 
     public void listar() {
         System.out.println("Receitas Cadastradas: ");
