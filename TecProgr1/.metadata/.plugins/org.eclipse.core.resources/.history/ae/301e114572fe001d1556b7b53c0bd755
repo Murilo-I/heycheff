@@ -1,0 +1,5 @@
+package br.fatec.principal;
+
+public class ContaPoupanca extends Conta {
+
+}

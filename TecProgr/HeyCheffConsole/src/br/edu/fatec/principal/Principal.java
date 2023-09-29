@@ -1,7 +1,9 @@
 package br.edu.fatec.principal;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
+import br.edu.fatec.DAO.ReceitaDAO;
 import br.edu.fatec.model.Receita;
 import br.edu.fatec.model.Step;
 
@@ -9,10 +11,30 @@ public class Principal {
 
 	private static Scanner sc;
 	private static Receita[] arrayReceitas;
+	private static ReceitaDAO receitaDAO;
+
+	public Principal() {
+		receitaDAO = new ReceitaDAO();
+	}
 
 	public static void main(String[] args) {
 
 		Receita receita1 = new Receita("Ovo Frito");
+		Step step1 = new Step("Quebrar ovo");
+		step1.setListIngrediente(Arrays.asList("Ovo"));
+		receita1.addListStep(step1);
+		
+		step1 = new Step("Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo");
+		step1.setListIngrediente(Arrays.asList("Manteiga", "Azeite"));
+		receita1.addListStep(step1);
+		
+		step1 = new Step("Adicione Sal a gosto");
+		step1.setListIngrediente(Arrays.asList("Sal"));
+		receita1.addListStep(step1);
+		
+		step1 = new Step("Frite dos dois lados ao apenas de um, até o ovo ficar no ponto desejado");
+		receita1.addListStep(step1);
+		
 		Step[] stepsReceita1 = { new Step(new String[] { "Ovo" }, "Quebrar ovo"),
 				new Step(new String[] { "Manteiga", "Azeite" }, "Colocar 15g de manteiga e um filete de azeite na frigideira e ligue o fogo baixo"),
 				new Step(new String[] { "Sal" }, "Adicione Sal a gosto"),
@@ -21,11 +43,40 @@ public class Principal {
 		receita1.setSteps(stepsReceita1);
 
 		Receita receita2 = new Receita("Arroz Cozido");
+		
+		Step step2 = new Step("Coloque 500ml de água para ferver");
+		step1.setListIngrediente(Arrays.asList("Água"));
+		receita2.addListStep(step2);
+
+		step2 = new Step("Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo");
+		step1.setListIngrediente(Arrays.asList("Azeite"));
+		receita2.addListStep(step2);
+
+		step2 = new Step("Adicione 2 alhos picados/espremidos e aguarde dourar");
+		step1.setListIngrediente(Arrays.asList("Alho"));
+		receita2.addListStep(step2);
+
+		step2 = new Step("Adicione 200g de Arroz Branco e misture por 30 segundos");
+		step1.setListIngrediente(Arrays.asList("Arroz Branco"));
+		receita2.addListStep(step2);
+		
+		step2 = new Step("Adicione a água até 1cm acima do arroz");
+		step1.setListIngrediente(Arrays.asList("Água"));
+		receita2.addListStep(step2);
+
+		step2 = new Step("Adicione sal a gosto");
+		step1.setListIngrediente(Arrays.asList("Sal"));
+		receita2.addListStep(step2);
+
+		step2 = new Step("Aguarde a água secar");
+		receita2.addListStep(step2);
+		
 		Step[] stepsReceita2 = { new Step(new String[] { "Água" }, "Coloque 500ml de água para ferver"),
 				new Step(new String[] { "Azeite" }, "Coloque um fio de azeite em uma panela pequena, ligue em fogo baixo"),
 				new Step(new String[] { "Alho" }, "Adicione 2 alhos picados/espremidos e aguarde dourar"),
 				new Step(new String[] { "Arroz Branco" }, "Adicione 200g de Arroz Branco e misture por 30 segundos"),
-				new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"), new Step(new String[] { "Sal" }, "Adicione sal a gosto"),
+				new Step(new String[] { "Água" }, "Adicione a água até 1cm acima do arroz"), 
+				new Step(new String[] { "Sal" }, "Adicione sal a gosto"),
 				new Step(new String[] {}, "Aguarde a água secar") };
 
 		receita2.setSteps(stepsReceita2);

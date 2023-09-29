@@ -1,0 +1,29 @@
+package br.edu.fatec.DAO;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.fatec.model.Receita;
+
+public class ReceitaDAO {
+	private List<Receita> listReceita;
+
+	public ReceitaDAO() {
+		this.listReceita = new ArrayList<Receita>();
+	}
+
+	public void addReceita(Receita receita) {
+		listReceita.add(receita);
+	}
+
+	public void printReceitas() {
+		System.out.println("--<< Impressão da receita >>--");
+		int i =1;
+		for (Receita receita : this.listReceita) {
+			System.out.println("Receita "+i);
+			System.out.println("Descrição: " + receita.getDescricao());
+			String space = "    "; 
+			
+		}
+	}
+}

@@ -24,6 +24,10 @@ public class Receita {
 	public List<Step> getListSteps(){
 		return this.listStep;
 	}
+	
+	public void addListStep(Step step) {
+		this.listStep.add(step);
+	}
 
 	public Step[] getSteps() {
 		return steps;

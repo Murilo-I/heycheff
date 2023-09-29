@@ -1,0 +1,13 @@
+package br.fatec.principal;
+
+public class RegistroContas {
+
+	public static void main(String[] args) {
+		Correntista[] correntistas = new Correntista[5];
+		correntistas[0] = new Correntista("38390000876", "José Manoel da Silva");
+		ContaCorrente contaCorrente = new ContaCorrente(33,correntistas,new Data(1,1,2021),0,2.2);
+		
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="br.edu.fatec.model.Receita"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="Exercicios.ExerBonitoPet"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+    <fullyQualifiedTypeName name="br.fatec.DAO.AlunoDAO"/>
+    <fullyQualifiedTypeName name="br.fatec.model.Aluno"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="br.fatec.principal.NaveEspacial"/>
+    <fullyQualifiedTypeName name="br.fatec.principal.Principal"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="br.edu.fatec.DAO.receitaDAO"/>
+    <fullyQualifiedTypeName name="br.edu.fatec.DAO.ReceitaDAO"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="br.edu.fatec.model.Step"/>
+</qualifiedTypeNameHistroy>

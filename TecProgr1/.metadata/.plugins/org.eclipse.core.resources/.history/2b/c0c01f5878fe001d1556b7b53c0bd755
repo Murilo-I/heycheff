@@ -1,0 +1,17 @@
+package br.fatec.principal;
+
+public class ContaCorrente extends Conta {
+
+	private double taxaMovimentacao;
+	
+	public ContaCorrente(int nrConta, Correntista correntista, Data dataAbertura, double saldo, double taxaMovimentacao) {
+		super(nrConta, correntista, dataAbertura, saldo);
+		this.taxaMovimentacao = taxaMovimentacao;
+		System.out.println("Nova conta corrente: \n"
+				+ "-Conta: " + nrConta
+				+ "-Correntista: " + correntista
+				+ "-Data de Abertura: " + dataAbertura.getDia() + "/" + dataAbertura.getMes() + "/" + dataAbertura.getAno()
+				+ "-Saldo " + "R$" + saldo);
+	}
+	
+}

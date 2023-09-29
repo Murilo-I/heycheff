@@ -1,0 +1,62 @@
+package br.fatec.principal;
+
+public abstract class Conta {
+	private int nrConta;
+	private double saldo;
+	private Correntista[] correntistas;
+	private Data dataAbertura;
+
+	public Conta(int nrConta, Correntista[] correntistas, Data dataAbertura, double saldo) {
+		this.nrConta = nrConta;
+		this.saldo = saldo;
+		this.correntistas = correntistas;
+		this.dataAbertura = dataAbertura;
+	}
+
+	public int getNrConta() {
+		return nrConta;
+	}
+
+	public void setNrConta(int nrConta) {
+		this.nrConta = nrConta;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public void fazerDeposito(double valor) {
+		if (valor > 0)
+			this.saldo += valor;
+	}
+
+	public boolean fazerSaque(double valor) {
+		double verificarSaldo = (getSaldo() - valor);
+		if (verificarSaldo >= 0) {
+			setSaldo(verificarSaldo);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public double consultaSaldo() {
+		return getSaldo();
+	}
+
+	public boolean fazerTranferencia(Conta dest, double valor) {
+		double verificaSaldoDest = dest.getSaldo() - valor;
+		if (verificaSaldoDest >= 0) {
+			dest.setSaldo(verificaSaldoDest);
+			this.setSaldo(getSaldo() + valor);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+}

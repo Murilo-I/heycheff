@@ -1,0 +1,4 @@
+1680175117440	Rename field 'qtReceitas'
+1680176836822	Extract local variable 'numReceitas2'
+1680281967367	Convert local variable 'sc' to field
+1680282152009	Extract method 'extracted'

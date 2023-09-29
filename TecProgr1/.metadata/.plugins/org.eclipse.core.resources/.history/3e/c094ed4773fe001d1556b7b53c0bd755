@@ -1,0 +1,6 @@
+package br.fatec.principal;
+
+public class Correntista {
+	private String cpf;
+	
+}

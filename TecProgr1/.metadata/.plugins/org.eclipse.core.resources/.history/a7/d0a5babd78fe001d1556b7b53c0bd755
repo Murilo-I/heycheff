@@ -1,0 +1,14 @@
+package br.fatec.principal;
+
+public class ContaPoupanca extends Conta {
+
+	public ContaPoupanca(int nrConta, Correntista correntista, Data dataAbertura, double saldo) {
+		super(nrConta, correntista, dataAbertura, saldo);
+		System.out.println("Nova conta poupança: \n"
+				+ "-Conta: " + nrConta + "\n"
+				+ "-Correntista: " + correntista + "\n"
+				+ "-Data de Abertura: " + dataAbertura.getDia() + "/" + dataAbertura.getMes() + "/" + dataAbertura.getAno() + "\n"
+				+ "-Saldo " + "R$" + saldo);
+	}
+
+}

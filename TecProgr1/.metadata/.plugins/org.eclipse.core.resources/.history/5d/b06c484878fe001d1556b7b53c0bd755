@@ -1,0 +1,12 @@
+package br.fatec.principal;
+
+public class ContaCorrente extends Conta {
+
+	private double taxaMovimentacao;
+	
+	public ContaCorrente(int nrConta, Correntista correntista, Data dataAbertura, double monto, double taxaMovimentacao) {
+		super(nrConta, correntista, dataAbertura, monto);
+		this.taxaMovimentacao = taxaMovimentacao;
+	}
+	
+}

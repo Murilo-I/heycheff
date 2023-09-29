@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract method &apos;private static void extracted(Receita receita)&apos; from &apos;br.edu.fatec.principal.Principal.main(...)&apos; to &apos;br.edu.fatec.principal.Principal&apos;&#x0D;&#x0A;- Original project: &apos;HeyCheffConsole&apos;&#x0D;&#x0A;- Method name: &apos;extracted&apos;&#x0D;&#x0A;- Destination type: &apos;br.edu.fatec.principal.Principal&apos;&#x0D;&#x0A;- Declared visibility: &apos;private&apos;" comments="false" description="Extract method &apos;extracted&apos;" destination="0" exceptions="false" flags="786434" id="org.eclipse.jdt.ui.extract.method" input="/src&lt;br.edu.fatec.principal{Principal.java" name="extracted" replace="false" selection="3273 1591" stamp="1680612983141" version="1.0" visibility="2"/>
+</session>

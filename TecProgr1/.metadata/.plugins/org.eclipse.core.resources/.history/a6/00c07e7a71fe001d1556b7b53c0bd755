@@ -1,0 +1,24 @@
+package br.fatec.principal;
+
+public abstract class Conta {
+	private int nrConta;
+	private double saldo;
+	
+	public Conta(int nrConta, Correntista[] correntistas, Data dataAbertura) {
+		
+	}
+	
+	public int getNrConta() {
+		return nrConta;
+	}
+	public void setNrConta(int nrConta) {
+		this.nrConta = nrConta;
+	}
+	public double getSaldo() {
+		return saldo;
+	}
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+	
+}
